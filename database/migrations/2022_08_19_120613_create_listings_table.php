@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCvMainInfoTable extends Migration
+class CreateListingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateCvMainInfoTable extends Migration
      */
     public function up()
     {
-        Schema::create('cv_main_info', function (Blueprint $table) {
+        Schema::create('listings', function (Blueprint $table) {
             $table->id();
             $table->string('fullname');
-            $table->email('email');
-            $table->integer('phone');
+            $table->string('email');
+            $table->bigInteger('phone');
             $table->string('location');
             $table->string('address');
             $table->string('pastindex');
@@ -32,6 +32,6 @@ class CreateCvMainInfoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cv_main_info');
+        Schema::dropIfExists('listings');
     }
 }
