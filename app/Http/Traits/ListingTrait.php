@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Traits;
+namespace App\Http\Traits;
 
 use App\Models\Listing;
 use App\Models\Academia;
@@ -8,7 +8,8 @@ use App\Models\Experience;
 use Illuminate\Http\Request;
 use App\Models\Accomplishment;
 
-trait ListingTrait {
+trait ListingTrait
+{
     /**
      * @param Request $request
      * @return $this|false|string
@@ -23,10 +24,10 @@ trait ListingTrait {
         $achievments = Accomplishment::where('cvid', $id)
                             ->get();        
         $listingData = [
-            $shownListing,
-            $experiences,
-            $education,
-            $achievments
+            'mainInfo' => $shownListing,
+            'workExp' => $experiences,
+            'education' => $education,
+            'achievments' => $achievments
         ];
         return $listingData;
     }
