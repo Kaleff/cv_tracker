@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Listing;
+use App\Models\Academia;
+use App\Models\Accomplishment;
+use App\Models\Experience;
+use App\Traits\ListingTrait;
+use Illuminate\Http\Request;
 
 class ListingController extends Controller
 {
+    use ListingTrait;
     public function index()
     {
         $listingsArray = Listing::all();
@@ -15,13 +20,15 @@ class ListingController extends Controller
         }
     }
 
-    public function show()
+    public function show($id)
     {
-        //
+        $listingData = $this->scrapeData($id);
+
+        return view('listing', $listingData);
     }
 
     public function edit()
     {
-        //
+        return view('edit_listing', $listingData);
     }
 }

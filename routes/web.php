@@ -20,6 +20,6 @@ Route::get('/', function () {
 
 Route::get('/', [ListingController::class, 'index']);
 
-Route::get('/cv/{re}/edit', [ListingController::class, 'edit']);
+Route::get('/cv/{id}/edit', [ListingController::class, 'edit']);
 
-Route::get('/cv/{re}', [ListingController::class, 'show']);
+Route::get('/cv/{id}', [ListingController::class, 'show']);
