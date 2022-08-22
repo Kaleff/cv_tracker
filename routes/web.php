@@ -14,12 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/cv/addlisting', [ListingController::class, 'create']);
 
-Route::get('/', [ListingController::class, 'index']);
+Route::get('/cv/{cvid}/edit/exp/{id}', [ExperienceController::class, 'update']);
+
+Route::get('/cv/{cvid}/edit/academy/{id}', [AcademiaController::class, 'update']);
+
+Route::get('/cv/{cvid}/edit/achievment/{id}', [AccomplishmentController::class, 'update']);
+
+Route::get('/cv/{id}/edit/info', [ListingController::class, 'update']);
 
 Route::get('/cv/{id}/edit', [ListingController::class, 'edit']);
 
 Route::get('/cv/{id}', [ListingController::class, 'show']);
+
+Route::get('/', [ListingController::class, 'index']);

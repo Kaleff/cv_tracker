@@ -16,15 +16,18 @@ trait ListingTrait
      */
     public function scrapeData($id) {
         $shownListing = Listing::where('id' , $id)
-                            ->get()[0];
+                            ->get();
         $experiences = Experience::where('cvid', $id)
                             ->get();
         $education = Academia::where('cvid', $id)
                             ->get();
         $achievments = Accomplishment::where('cvid', $id)
-                            ->get();        
+                            ->get();   
+        if($shownListing->isEmpty()) { 
+            abort(404);
+        }
         $listingData = [
-            'mainInfo' => $shownListing,
+            'mainInfo' => $shownListing[0],
             'workExp' => $experiences,
             'education' => $education,
             'achievments' => $achievments

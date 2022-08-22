@@ -15,21 +15,23 @@ class ListingController extends Controller
     public function index()
     {
         $listingsArray = Listing::all();
-        foreach($listingsArray as $listing) {
-            dd($listing->fullname, "+".$listing->phone, $listing->email);
-        }
+        return view('homepage', ['listingsArray' => $listingsArray]);
     }
 
     public function show($id)
     {
         $listingData = $this->scrapeData($id);
-        dd($listingData);
-
-        return view('listing', $listingData);
+        return view('listing/cvlisting', ['listingData' => $listingData]);
     }
 
-    public function edit()
+    public function edit($id)
     {
-        //return view('edit_listing', $listingData);
+        $listingData = $this->scrapeData($id);
+        return view('listing/edit_listing', ['listingData' => $listingData]);
+    }
+
+    public function create()
+    {
+        return view('listing/addlisting');
     }
 }
