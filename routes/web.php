@@ -16,13 +16,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/cv/addlisting', [ListingController::class, 'create']);
 
-Route::get('/cv/{cvid}/edit/exp/{id}', [ExperienceController::class, 'update']);
+Route::post('/cv/storelisting', [ListingController::class, 'store']);
 
-Route::get('/cv/{cvid}/edit/academy/{id}', [AcademiaController::class, 'update']);
+Route::get('/cv/{id}/delete', [ListingController::class, 'delete']);
 
-Route::get('/cv/{cvid}/edit/achievment/{id}', [AccomplishmentController::class, 'update']);
+Route::get('/cv/{cvid}/edit/exp/{id}', [ExperienceController::class, 'edit']);
 
-Route::get('/cv/{id}/edit/info', [ListingController::class, 'update']);
+Route::get('/cv/{cvid}/edit/academy/{id}', [AcademiaController::class, 'edit']);
+
+Route::get('/cv/{cvid}/edit/achievment/{id}', [AccomplishmentController::class, 'edit']);
+
+Route::get('/cv/{id}/edit_info', [ListingController::class, 'edit_info']);
 
 Route::get('/cv/{id}/edit', [ListingController::class, 'edit']);
 

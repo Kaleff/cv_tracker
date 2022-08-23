@@ -1,7 +1,9 @@
 .gridTable {
     grid-template-columns: 30% 30% 30%;
     gap: 5%;
-    display: grid;  
+    display: grid; 
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
 body {
@@ -10,13 +12,13 @@ body {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
+    margin: 0;
 }
 
 nav {
     padding: 30px;
-    border: 2px solid #2c3e50;
+    /* border: 2px solid #2c3e50; */
     background-color: #2ca46d;
-    margin: -10px -10px 20px -10px;
 }
 
 nav a {

@@ -7,7 +7,7 @@
     <h3>Adress: {{ $listingData['mainInfo']->location }}. {{ $listingData['mainInfo']->address }}</h3>
     <h3>Past Index: {{ $listingData['mainInfo']->pastindex }}</h3>
 </div>
-<a href='/' class='🔗'>Edit main information</a>
+<a href='{{ url("cv/".$listingData['mainInfo']->id."/edit_info") }}' class='🔗'><button>Edit main information</button></a>
 <h1>Education:</h1>
 @foreach($listingData['education'] as $academia)
     <div class='entry'>
@@ -16,30 +16,42 @@
         <h3>Status: {{ $academia->status }}</h3>
         <h3>Starting date: {{ $academia->startdate }}</h3>
         <h3>End date: {{ $academia->enddate }}</h3>
-        <a href='/cv/{{ $listingData['mainInfo']->id }}/edit/academy/{{ $academia->id }}' class='🔗'>Edit entry</a>
+        <a href='/cv/{{ $listingData['mainInfo']->id }}/edit/academy/{{ $academia->id }}' class='🔗'>
+            <button>Edit entry</button>
+        </a>
     </div>
 @endforeach
 
-<a href='/cv/{{ $listingData['mainInfo']->id }}/add/academy' class='🔗'>Add education entry</a>
+<a href='/cv/{{ $listingData['mainInfo']->id }}/add/academy' class='🔗'>
+    <button>Add education entry</button>
+</a>
 <h1>Work experience:</h1>
 @foreach($listingData['workExp'] as $workExp)
     <div class='entry'>
         <h2>Company: {{ $workExp->company }}</h2>
         <h3>Role: {{ $workExp->role }}</h3>
         <h3>{{ $workExp->startdate }} - {{ $workExp->enddate }}</h3>
-        <a href='/cv/{{ $listingData['mainInfo']->id }}/edit/exp/{{ $workExp->id }}' class='🔗'>Edit entry</a>
+        <a href='/cv/{{ $listingData['mainInfo']->id }}/edit/exp/{{ $workExp->id }}' class='🔗'>
+            <button>Edit entry</button>
+        </a>
     </div>
 @endforeach
 
-<a href='/cv/{{ $listingData['mainInfo']->id }}/add/exp' class='🔗'>Add working experience entry</a>
+<a href='/cv/{{ $listingData['mainInfo']->id }}/add/exp' class='🔗'>
+    <button>Add working experience entry</button>
+</a>
 <h1>Achievments:</h1>
 @foreach($listingData['achievments'] as $achievment)
     <div class='entry'>
         <h2>{{ $achievment->title }}</h2>
         <h3>{{ $achievment->description }}</h3>
-        <a href='/cv/{{ $listingData['mainInfo']->id }}/edit/achievment/{{ $achievment->id }}' class='🔗'>Edit entry</a>
+        <a href='/cv/{{ $listingData['mainInfo']->id }}/edit/achievment/{{ $achievment->id }}' class='🔗'>
+            <button>Edit entry</button>
+        </a>
     </div>
 @endforeach
 
-<a href='/cv/{{ $listingData['mainInfo']->id }}/edit/achievment' class='🔗'>Add achievment entry</a>
+<a href='/cv/{{ $listingData['mainInfo']->id }}/edit/achievment' class='🔗'>
+    <button>Add achievment entry</button>
+</a>
 @endsection

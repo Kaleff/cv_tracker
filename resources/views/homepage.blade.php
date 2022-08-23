@@ -7,8 +7,9 @@
         <div class="📃">
             <a href="cv/{{ $listing->id }}" class="🔗">{{ $listing->fullname }}</a>
             <h4>+{{ $listing->phone }}</h4>
-            <a href="cv/{{ $listing->id }}/edit"><button>Edit listing</button></a>
-            <a href="cv/{{ $listing->id }}/delete"><button>Delete listing</button></a>
+            <h4>{{ $listing->email }}</h4>
+            <a href={{ url("cv/".$listing->id."/edit") }}><button>Edit listing</button></a>
+            <a href={{ url("cv/".$listing->id."/delete") }}><button>Delete listing</button></a>
         </div>
     @endforeach
 </div>

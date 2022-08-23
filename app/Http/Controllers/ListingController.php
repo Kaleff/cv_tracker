@@ -30,8 +30,38 @@ class ListingController extends Controller
         return view('listing/edit_listing', ['listingData' => $listingData]);
     }
 
+    public function edit_info($id) 
+    {
+        $listingInfo = Listing::where('id', $id)
+                                ->get();
+        $listingInfo = $listingInfo->first();
+        return view('listing/edit_info', ['listingInfo' => $listingInfo]);
+    }
     public function create()
     {
         return view('listing/addlisting');
+    }
+
+    public function store(Request $request)
+    {
+        $formFields = $request->validate([
+            'fullname' => 'required',
+            'phone' => 'required',
+            'email' => ['required', 'email'],
+            'location' => 'required',
+            'address' => 'required',
+            'pastindex' => 'required',
+        ]);
+
+        Listing::create($formFields);
+
+        return redirect('/');
+    }
+
+    public function delete($id)
+    {
+        $listing = Listing::find($id);
+        $listing->delete();
+        return redirect('/');
     }
 }

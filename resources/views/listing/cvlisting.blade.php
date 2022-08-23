@@ -26,5 +26,6 @@
     <h2>{{ $achievment->title }}</h2>
     <h3>{{ $achievment->description }}</h3>
 @endforeach
+<a href='{{ url("cv/".$listingData["mainInfo"]->id."/edit") }}'><button>Edit CV/add information</button></a>
 
 @endsection
