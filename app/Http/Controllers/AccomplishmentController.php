@@ -42,6 +42,7 @@ class AccomplishmentController extends Controller
 
     public function edit($cvid, $id)
     {
+        // Scrape the old data to display on the edit form
         $listingInfo = Accomplishment::where('id', $id)
                     ->get();
         $listingInfo = $listingInfo->first();

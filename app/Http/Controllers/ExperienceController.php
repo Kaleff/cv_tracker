@@ -20,15 +20,14 @@ class ExperienceController extends Controller
     {
         $formFields = $request->validate([
             'cvid' => 'required',
-            'title' => 'required',
-            'course' => 'required',
-            'status' => 'required',
+            'company' => 'required',
+            'role' => 'required',
             'startdate' => 'required',
             'enddate' => 'required'
         ]);
         Experience::create($formFields);
         $cvid = $formFields['cvid'];
-        return redirect('cv/'.$cvid);
+        return redirect('cv/'.$cvid.'/edit');
     }
 
     // Delete entry
@@ -37,6 +36,38 @@ class ExperienceController extends Controller
     {
         $listing = Experience::find($id);
         $listing->delete();
+        return redirect('cv/'.$cvid.'/edit');
+    }
+
+    // Edit form entry
+
+    public function edit($cvid, $id)
+    {
+        // Scrape the old data to display on the edit form
+        $listingInfo = Experience::where('id', $id)
+                                    ->get();
+        $listingInfo = $listingInfo->first();
+        return view('experience/edit', ['listingInfo' => $listingInfo]);
+    }
+
+    // Update entry
+
+    public function update(Request $request)
+    {
+        $formFields = $request->validate([
+            'cvid' => 'required',
+            'company' => 'required',
+            'role' => 'required',
+            'startdate' => 'required',
+            'enddate' => 'required',
+            'id' => 'required'
+        ]);
+        // Getting the entry id from the request.
+        $id = ($formFields['id']);
+        $listing = Experience::find($id);
+        $listing->update($formFields);
+        // Getting an id of a CV the entry is attached to.
+        $cvid = $formFields['cvid'];
         return redirect('cv/'.$cvid.'/edit');
     }
 }

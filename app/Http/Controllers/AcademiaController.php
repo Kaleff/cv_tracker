@@ -44,6 +44,7 @@ class AcademiaController extends Controller
 
     public function edit($cvid, $id)
     {
+        // Scrape the old data to display on the edit form
         $listingInfo = Academia::where('id', $id)
                     ->get();
         $listingInfo = $listingInfo->first();
