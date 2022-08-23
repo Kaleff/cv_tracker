@@ -16,13 +16,17 @@
         <h3>Status: {{ $academia->status }}</h3>
         <h3>Starting date: {{ $academia->startdate }}</h3>
         <h3>End date: {{ $academia->enddate }}</h3>
-        <a href='/cv/{{ $listingData['mainInfo']->id }}/edit/academy/{{ $academia->id }}' class='🔗'>
+        <a href='{{ url("cv/".$academia->cvid."/edit/academy/".$academia->id) }}' class='🔗'>
             <button>Edit entry</button>
+        </a>
+        <br>
+        <a href='{{ url("cv/".$academia->cvid."/delete/academy/".$academia->id) }}' class='🔗'>
+            <button>Delete entry</button>
         </a>
     </div>
 @endforeach
 
-<a href='/cv/{{ $listingData['mainInfo']->id }}/add/academy' class='🔗'>
+<a href='{{ url("cv/".$listingData['mainInfo']->id."/add/academy/") }}' class='🔗'>
     <button>Add education entry</button>
 </a>
 <h1>Work experience:</h1>
@@ -31,13 +35,17 @@
         <h2>Company: {{ $workExp->company }}</h2>
         <h3>Role: {{ $workExp->role }}</h3>
         <h3>{{ $workExp->startdate }} - {{ $workExp->enddate }}</h3>
-        <a href='/cv/{{ $listingData['mainInfo']->id }}/edit/exp/{{ $workExp->id }}' class='🔗'>
+        <a href='{{ url("cv/".$workExp->cvid."/edit/exp/".$workExp->id) }}' class='🔗'>
             <button>Edit entry</button>
+        </a>
+        <br>
+        <a href='{{ url("cv/".$workExp->cvid."/delete/exp/".$workExp->id) }}' class='🔗'>
+            <button>Delete entry</button>
         </a>
     </div>
 @endforeach
 
-<a href='/cv/{{ $listingData['mainInfo']->id }}/add/exp' class='🔗'>
+<a href='{{ url("cv/".$listingData['mainInfo']->id."/add/exp/") }}' class='🔗'>
     <button>Add working experience entry</button>
 </a>
 <h1>Achievments:</h1>
@@ -45,13 +53,17 @@
     <div class='entry'>
         <h2>{{ $achievment->title }}</h2>
         <h3>{{ $achievment->description }}</h3>
-        <a href='/cv/{{ $listingData['mainInfo']->id }}/edit/achievment/{{ $achievment->id }}' class='🔗'>
+        <a href='{{ url("cv/".$academia->cvid."/edit/achievment/".$academia->id) }}' class='🔗'>
             <button>Edit entry</button>
+        </a>
+        <br>
+        <a href='{{ url("cv/".$academia->cvid."/delete/achievment/".$academia->id) }}' class='🔗'>
+            <button>Delete entry</button>
         </a>
     </div>
 @endforeach
 
-<a href='/cv/{{ $listingData['mainInfo']->id }}/edit/achievment' class='🔗'>
+<a href='{{ url("cv/".$listingData['mainInfo']->id."/add/achievment/") }}' class='🔗'>
     <button>Add achievment entry</button>
 </a>
 @endsection

@@ -15,6 +15,7 @@
     <input type=text name="address" required value="{{ $listingInfo->address }}">
     <p>Past Index:</p>
     <input type="text" name="pastindex" placeholder="LV-xxxx" required value="{{ $listingInfo->pastindex }}">
+    <input hidden name='id' value="{{ $listingInfo->id }}">
     <br>
     <button type="submit">Submit</button>
 </form>
