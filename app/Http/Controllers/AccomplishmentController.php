@@ -21,14 +21,12 @@ class AccomplishmentController extends Controller
         $formFields = $request->validate([
             'cvid' => 'required',
             'title' => 'required',
-            'course' => 'required',
-            'status' => 'required',
-            'startdate' => 'required',
-            'enddate' => 'required'
+            'description' => 'required',
+            'type' => 'required'
         ]);
         Accomplishment::create($formFields);
         $cvid = $formFields['cvid'];
-        return redirect('cv/'.$cvid);
+        return redirect('cv/'.$cvid.'/edit');
     }
 
     // Delete entry
@@ -37,6 +35,36 @@ class AccomplishmentController extends Controller
     {
         $listing = Accomplishment::find($id);
         $listing->delete();
+        return redirect('cv/'.$cvid.'/edit');
+    }
+
+    // Edit form entry
+
+    public function edit($cvid, $id)
+    {
+        $listingInfo = Accomplishment::where('id', $id)
+                    ->get();
+        $listingInfo = $listingInfo->first();
+        return view('accomplishment/edit', ['listingInfo' => $listingInfo]);
+    }
+
+    // Update entry
+
+    public function update(Request $request)
+    {
+        $formFields = $request->validate([
+            'cvid' => 'required',
+            'title' => 'required',
+            'type' => 'required',
+            'description' => 'required',
+            'id' => 'required'
+        ]);
+        // Getting the entry id from the request.
+        $id = ($formFields['id']);
+        $listing = Accomplishment::find($id);
+        $listing->update($formFields);
+        // Getting an id of a CV the entry is attached to.
+        $cvid = $formFields['cvid'];
         return redirect('cv/'.$cvid.'/edit');
     }
 }

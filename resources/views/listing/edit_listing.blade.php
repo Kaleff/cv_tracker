@@ -53,11 +53,11 @@
     <div class='entry'>
         <h2>{{ $achievment->title }}</h2>
         <h3>{{ $achievment->description }}</h3>
-        <a href='{{ url("cv/".$academia->cvid."/edit/achievment/".$academia->id) }}' class='🔗'>
+        <a href='{{ url("cv/".$achievment->cvid."/edit/achievment/".$achievment->id) }}' class='🔗'>
             <button>Edit entry</button>
         </a>
         <br>
-        <a href='{{ url("cv/".$academia->cvid."/delete/achievment/".$academia->id) }}' class='🔗'>
+        <a href='{{ url("cv/".$achievment->cvid."/delete/achievment/".$achievment->id) }}' class='🔗'>
             <button>Delete entry</button>
         </a>
     </div>
