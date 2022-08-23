@@ -43,6 +43,12 @@ Route::post('/store/achievment', [AccomplishmentController::class, 'store']);
 
 // Update entries
 
+Route::post('/update/exp', [ExperienceController::class, 'update']);
+
+Route::post('/update/academy/', [AcademiaController::class, 'update']);
+
+Route::post('/update/achievment', [AccomplishmentController::class, 'update']);
+
 // Delete entries
 
 Route::get('/cv/{cvid}/delete/exp/{id}', [ExperienceController::class, 'delete']);

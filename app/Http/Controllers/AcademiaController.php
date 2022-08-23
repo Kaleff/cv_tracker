@@ -39,4 +39,36 @@ class AcademiaController extends Controller
         $listing->delete();
         return redirect('cv/'.$cvid.'/edit');
     }
+
+    // Edit form entry
+
+    public function edit($cvid, $id)
+    {
+        $listingInfo = Academia::where('id', $id)
+                    ->get();
+        $listingInfo = $listingInfo->first();
+        return view('academia/edit', ['listingInfo' => $listingInfo]);
+    }
+
+    // Update entry
+
+    public function update(Request $request)
+    {
+        $formFields = $request->validate([
+            'cvid' => 'required',
+            'title' => 'required',
+            'course' => 'required',
+            'status' => 'required',
+            'startdate' => 'required',
+            'enddate' => 'required',
+            'id' => 'required'
+        ]);
+        // Getting the entry id from the request.
+        $id = ($formFields['id']);
+        $listing = Academia::find($id);
+        $listing->update($formFields);
+        // Getting an id of a CV the entry is attached to.
+        $cvid = $formFields['cvid'];
+        return redirect('cv/'.$cvid.'/edit');
+    }
 }
